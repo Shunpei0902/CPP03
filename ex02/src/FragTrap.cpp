@@ -6,13 +6,13 @@
 /*   By: sasano <shunkotkg0141@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 02:29:56 by sasano            #+#    #+#             */
-/*   Updated: 2025/01/19 02:32:02 by sasano           ###   ########.fr       */
+/*   Updated: 2025/06/06 13:50:06 by sasano           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(): ClapTrap()
+FragTrap::FragTrap() : ClapTrap()
 {
     this->_hitPoints = 100;
     this->_energyPoints = 100;
@@ -20,7 +20,7 @@ FragTrap::FragTrap(): ClapTrap()
     std::cout << "FragTrap Default constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(std::string name): ClapTrap(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
     this->_hitPoints = 100;
     this->_energyPoints = 100;
@@ -28,7 +28,7 @@ FragTrap::FragTrap(std::string name): ClapTrap(name)
     std::cout << "FragTrap Constructor for " << this->_name << " called" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &copy): ClapTrap(copy)
+FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 {
     std::cout << "FragTrap Copy constructor called" << std::endl;
 }
@@ -50,5 +50,10 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFivesGuys(void)
 {
+    if (this->_hitPoints <= 0)
+    {
+        std::cout << "FragTrap " << this->_name << " is dead and cannot request a high five!" << std::endl;
+        return;
+    }
     std::cout << "FragTrap " << this->_name << " requests a high five!" << std::endl;
 }

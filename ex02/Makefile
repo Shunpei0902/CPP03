@@ -7,16 +7,16 @@ SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
 INC = $(shell find $(INC_DIR) -type f -name "*.hpp")
 FLAGS = -Wall -Wextra -Werror -std=c++98
-CC = c++
+CXX = c++
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(INC)
-	$(CC) $(FLAGS) $(OBJS) -I $(INC_DIR) -o $(NAME)
+	$(CXX) $(FLAGS) $(OBJS) -I $(INC_DIR) -o $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INC)
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
+	$(CXX) $(FLAGS) -I $(INC_DIR) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ_DIR)
